@@ -8,10 +8,9 @@ import {
 	BreadcrumbList,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import AddToCart from "@/components/AddToCart";
 
 import { PRODUCTS } from "@/data/products";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Lock, Mail, Slash, ThumbsUp } from "lucide-react";
 
@@ -50,10 +49,7 @@ const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
 					</div>
 					<div className='font-extralight' dangerouslySetInnerHTML={{ __html: product.summary }}></div>
 					<div className='text-[#b3af54]'>Op voorraad</div>
-					<div className='flex gap-4 items-center flex-wrap'>
-						<Input className='w-16' type='number' defaultValue={1} min={1} />
-						<Button className='bg-primary hover:bg-primary/90 uppercase'>Toevoegen aan winkelwagen</Button>
-					</div>
+					<AddToCart product={product} />
 					<Separator className='mt-4' />
 					<ul className='ml-6 flex flex-col gap-2'>
 						{FEATURES.map((feature, index) => (

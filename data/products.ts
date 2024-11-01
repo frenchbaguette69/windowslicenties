@@ -1,4 +1,6 @@
-export const PRODUCTS = [
+import { Product } from "@/types/Product";
+
+export const PRODUCTS: Product[] = [
 	{
 		id: "windows-10-kopen",
 		name: "Windows 10 licentie",

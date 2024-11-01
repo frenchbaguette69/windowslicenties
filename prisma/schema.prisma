@@ -11,7 +11,7 @@ datasource db {
 model Product {
   id          String   @id @default(cuid())
   type        String  
-  license     String
+  license     String   @unique
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
