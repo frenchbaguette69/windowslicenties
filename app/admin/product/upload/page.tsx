@@ -21,6 +21,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import { useSession } from "next-auth/react";
 
 type Product = {
 	ID: string;
@@ -30,7 +31,13 @@ type Product = {
 const Product = () => {
 	const [products, setProducts] = useState<Product[]>([]);
 	const [validUpload, setValidUpload] = useState(false);
+	const { data: session } = useSession();
 	const { toast } = useToast();
+
+	// @ts-ignore
+	if (!session || session.user?.role !== "ADMIN") {
+		return null;
+	}
 
 	const parseProducts = (file: File) => {
 		Papa.parse(file, {

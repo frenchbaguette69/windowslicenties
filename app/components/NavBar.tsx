@@ -7,8 +7,21 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import Logo from "@/public/WINDOWSlicenties.png";
 
+import { signIn, signOut, useSession } from "next-auth/react";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { LogOutIcon } from "lucide-react";
+
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
+	const { data: session, status } = useSession();
 
 	return (
 		<div>
@@ -63,7 +76,28 @@ const NavBar = () => {
 
 					{/* Login knop voor desktop */}
 					<div className='hidden md:block'>
-						<Button variant='secondary'>Aanmelden</Button>
+						{session ? (
+							<DropdownMenu>
+								<DropdownMenuTrigger>
+									<Avatar>
+										<AvatarImage src={session.user?.image || undefined} />
+										<AvatarFallback>U</AvatarFallback>
+									</Avatar>
+								</DropdownMenuTrigger>
+								<DropdownMenuContent>
+									<DropdownMenuItem>Profile</DropdownMenuItem>
+									<DropdownMenuSeparator />
+									<DropdownMenuItem className='cursor-pointer' onClick={() => signOut()}>
+										<LogOutIcon />
+										Log out
+									</DropdownMenuItem>
+								</DropdownMenuContent>
+							</DropdownMenu>
+						) : (
+							<Link href='/api/auth/signin'>
+								<Button variant='secondary'>Aanmelden</Button>
+							</Link>
+						)}
 					</div>
 
 					{/* Hamburger menu voor mobiel */}
