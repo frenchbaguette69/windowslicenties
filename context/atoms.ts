@@ -1,10 +1,22 @@
 import { atom } from "jotai";
 
-import { Product } from "@/types/Product";
+import { CartItem, Product } from "@/types/Product";
+import { TBillingInfo } from "@/types/Checkout";
 
-type CartItem = {
-	product: Product;
-	quantity: number;
+const initBillingInfo = {
+	firstName: "",
+	lastName: "",
+	company: "",
+	country: "Netherlands",
+	street: "",
+	apt: "",
+	postcode: "",
+	place: "",
+	phone: "",
+	email: "",
+	notes: "",
 };
 
 export const cartAtom = atom<CartItem[]>([]);
+
+export const billingInfoAtom = atom<TBillingInfo>(initBillingInfo);

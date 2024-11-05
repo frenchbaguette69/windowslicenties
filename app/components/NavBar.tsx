@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiMail, FiTag, FiCreditCard, FiMenu } from "react-icons/fi";
@@ -18,10 +18,21 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LogOutIcon } from "lucide-react";
+import { useSetAtom } from "jotai";
+import { cartAtom } from "@/context/atoms";
 
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
 	const { data: session, status } = useSession();
+
+	const setCartItems = useSetAtom(cartAtom);
+
+	useEffect(() => {
+		const cart = localStorage.getItem("cart");
+		if (cart) {
+			setCartItems(JSON.parse(cart));
+		}
+	}, []);
 
 	return (
 		<div>

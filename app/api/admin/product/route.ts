@@ -18,14 +18,14 @@ export async function POST(req: NextRequest) {
 
 			const productExists = PRODUCTS.find((product) => product.id === item.ID);
 
-			if (productExists) return { type: item.ID, license: item.Key };
+			if (productExists) return { type: item.ID, key: item.Key };
 		})
-		.filter((item): item is { type: string; license: string } => item !== false && item !== undefined);
+		.filter((item): item is { type: string; key: string } => item !== false && item !== undefined);
 
 	//save to database
 	if (validated.length) {
 		try {
-			await db.product.createMany({
+			await db.license.createMany({
 				data: validated,
 			});
 		} catch (error) {

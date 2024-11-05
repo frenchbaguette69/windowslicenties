@@ -29,13 +29,6 @@ const Cart = () => {
 		localStorage.setItem("cart", JSON.stringify(items));
 	};
 
-	useEffect(() => {
-		const cart = localStorage.getItem("cart");
-		if (cart) {
-			setCartItems(JSON.parse(cart));
-		}
-	}, []);
-
 	return (
 		<div className='mt-20 px-32'>
 			<h2 className='text-6xl font-bold text-center'>Winkelwagen</h2>
