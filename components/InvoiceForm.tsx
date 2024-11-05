@@ -16,6 +16,9 @@ import { TBillingInfo } from "@/types/Checkout";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { TABS } from "@/types/Checkout";
+import { useEffect } from "react";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 
 const formSchema = z.object({
 	firstName: z.string().min(1),
@@ -38,6 +41,7 @@ type InvoiceFormProps = {
 
 const InvoiceForm = ({ setActiveTab, setIsBillingSubmitted }: InvoiceFormProps) => {
 	const router = useRouter();
+	const session = useSession();
 	const [billingInfo, setBillingInfo] = useAtom(billingInfoAtom);
 
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -54,6 +58,19 @@ const InvoiceForm = ({ setActiveTab, setIsBillingSubmitted }: InvoiceFormProps) 
 	const handleFormChange = () => {
 		setIsBillingSubmitted(false);
 	};
+
+	const fetchBillingInfo = async () => {
+		const res = await axios.get("/api/user/get-billing-info");
+
+		if (res.data.success) {
+			setBillingInfo(res.data.user);
+			form.reset(res.data.user);
+		}
+	};
+
+	useEffect(() => {
+		if (session.data) fetchBillingInfo();
+	}, [session]);
 
 	return (
 		<>

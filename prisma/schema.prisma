@@ -82,12 +82,15 @@ model Authenticator {
 // license schema
 model License {
   id        String   @id @default(cuid())
+  name      String
   type      String
   key       String   @unique
   sold      Boolean  @default(false)
+  orderId   String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Order     Order[]
+
+  Order Order? @relation(fields: [orderId], references: [id])
 }
 
 model Guest {
@@ -127,15 +130,14 @@ model Order {
   id              String      @id @default(cuid())
   guestId         String
   items           OrderItem[]
-  licenseId       String?
   amount          Float
-  paymentIntentId String?
+  paymentIntentId String?     @unique
   paid            Boolean     @default(false)
   delivered       Boolean     @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  guest   Guest    @relation(fields: [guestId], references: [id], onDelete: Cascade)
-  license License? @relation(fields: [licenseId], references: [id], onDelete: Cascade)
+  guest   Guest     @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  license License[]
 }

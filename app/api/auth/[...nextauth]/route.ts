@@ -5,8 +5,13 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import bcrypt from "bcrypt";
 import db from "@/db";
 
-export const authOptions = {
+const authOptions = {
 	adapter: PrismaAdapter(db),
+	theme: {
+		colorScheme: "light", // "auto" | "dark" | "light"
+		brandColor: "#009cde", // Hex color code
+		logo: `${process.env.NEXTAUTH_URL}/WINDOWSlicenties.png`, // Absolute URL to image
+	},
 	session: {
 		strategy: "jwt",
 	},

@@ -39,17 +39,15 @@ export async function POST(req: NextRequest) {
 	if (orders.length === 0 || orders.length !== data.orders.length)
 		return NextResponse.json({ error: "Invalid products" }, { status: 400 });
 
-	const amount = orders.reduce((acc, item) => {
-		const price = parseFloat(item.product.discount_price);
-		return acc + price * parseInt(item.quantity);
-	}, 0);
-
 	const orderItems = orders.map((item) => ({
 		productId: item.product.id,
 		quantity: parseInt(item.quantity),
 		price: parseFloat(item.product.discount_price),
 		total: parseFloat(item.product.discount_price) * parseInt(item.quantity),
 	}));
+
+	// max 2 decimal points
+	const amount = orderItems.reduce((acc, item) => Number((acc + item.total).toFixed(2)), 0);
 
 	// check if the guest is a repeated buyer
 	const guest = await db.guest.findFirst({
@@ -88,7 +86,7 @@ export async function POST(req: NextRequest) {
 			currency: "eur",
 			receipt_email: data.userData.email,
 			metadata: {
-				order_id: order.id,
+				orderId: order.id,
 			},
 			automatic_payment_methods: {
 				enabled: true,
@@ -104,7 +102,7 @@ export async function POST(req: NextRequest) {
 			},
 		});
 
-		return NextResponse.json({ success: true, clientSecret: paymentIntent.client_secret }, { status: 200 });
+		return NextResponse.json({ success: true, clientSecret: paymentIntent.client_secret, order }, { status: 200 });
 	} catch (error) {
 		console.error(error);
 		return NextResponse.json({ error: "Failed to create payment intent" }, { status: 500 });

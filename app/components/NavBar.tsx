@@ -17,15 +17,15 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogOutIcon } from "lucide-react";
-import { useSetAtom } from "jotai";
+import { LogOutIcon, ShoppingCart } from "lucide-react";
+import { useAtom } from "jotai";
 import { cartAtom } from "@/context/atoms";
 
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
 	const { data: session, status } = useSession();
 
-	const setCartItems = useSetAtom(cartAtom);
+	const [cartItems, setCartItems] = useAtom(cartAtom);
 
 	useEffect(() => {
 		const cart = localStorage.getItem("cart");
@@ -86,7 +86,13 @@ const NavBar = () => {
 					</nav>
 
 					{/* Login knop voor desktop */}
-					<div className='hidden md:block'>
+					<div className='hidden md:flex md:gap-5 md:items-center'>
+						<Link href='/cart'>
+							<div className='flex gap-1 text-sm'>
+								<ShoppingCart size={18} />
+								{cartItems.length}
+							</div>
+						</Link>
 						{session ? (
 							<DropdownMenu>
 								<DropdownMenuTrigger>

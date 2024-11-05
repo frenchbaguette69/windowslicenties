@@ -143,7 +143,7 @@ export const PRODUCTS: Product[] = [
 	},
 	{
 		id: "windows-11-pro-licentie-productcode",
-		name: " Windows 11 licentie",
+		name: "Windows 11 licentie",
 		title: "Windows 11 Pro licentie/productcode",
 		summary: `Windows 11 kopen voor de PC. Windows 11 Pro. <br/> <br/> Met deze activatie code kun je snel een eenvoudig Windows 11 kopen en de licentie op je pc installeren en activeren. Wij adviseren dringend om een schone Windows installatie te doen met ons Installatiebestand (ISO). <br/> <br/> Levering direct <u>DIGITAAL<u> per mail (binnen 2 minuten). Licenties dienen binnen één maand na aanschaf geactiveerd te worden.`,
 		imgsrc: "/assets/images/windows-11-pro.webp",

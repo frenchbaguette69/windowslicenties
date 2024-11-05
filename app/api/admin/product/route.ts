@@ -16,11 +16,11 @@ export async function POST(req: NextRequest) {
 		.map((item) => {
 			if (!item.ID || !item.Key) return false;
 
-			const productExists = PRODUCTS.find((product) => product.id === item.ID);
+			const product = PRODUCTS.find((p) => p.id === item.ID);
 
-			if (productExists) return { type: item.ID, key: item.Key };
+			if (product) return { name: product.name, type: item.ID, key: item.Key };
 		})
-		.filter((item): item is { type: string; key: string } => item !== false && item !== undefined);
+		.filter((item): item is { name: string; type: string; key: string } => item !== false && item !== undefined);
 
 	//save to database
 	if (validated.length) {
