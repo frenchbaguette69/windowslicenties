@@ -11,7 +11,12 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
-const AddToCart = ({ product }: { product: TProduct }) => {
+type TProps = {
+	product: TProduct;
+	showQuantity?: boolean;
+};
+
+const AddToCart = ({ product, showQuantity = true }: TProps) => {
 	const [quantity, setQuantity] = useState(1);
 	const [cartItems, setCartItems] = useAtom(cartAtom);
 	const { toast } = useToast();
@@ -41,6 +46,13 @@ const AddToCart = ({ product }: { product: TProduct }) => {
 			),
 		});
 	};
+
+	if (!showQuantity)
+		return (
+			<Button onClick={addToCart} className='text-white' variant='link'>
+				Toevoegen aan <br /> winkelwagen
+			</Button>
+		);
 
 	return (
 		<div className='flex gap-4 items-center flex-wrap'>

@@ -13,7 +13,7 @@ const Checkout = () => {
 	const [isBillingSubmitted, setIsBillingSubmitted] = useState(false);
 
 	return (
-		<div className='mt-20 px-32'>
+		<div className='my-20 px-32'>
 			<h2 className='text-6xl font-bold text-center'>Afrekenen</h2>
 			<Tabs
 				defaultValue='billing'

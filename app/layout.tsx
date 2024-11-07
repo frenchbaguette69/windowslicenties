@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import type { Metadata } from "next";
 import { Provider } from "jotai";
 import "./globals.css";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
 	title: "Windows 11 kopen - Windows 10 kopen - Windowslicenties.nl",
@@ -24,6 +25,7 @@ export default function RootLayout({ children, session }: Props) {
 					<Provider>
 						<NavBar />
 						{children}
+						<Footer />
 					</Provider>
 					<Toaster />
 				</NextAuthProvider>

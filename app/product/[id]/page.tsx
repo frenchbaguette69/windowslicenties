@@ -13,6 +13,7 @@ import AddToCart from "@/components/AddToCart";
 import { PRODUCTS } from "@/data/products";
 import { Separator } from "@/components/ui/separator";
 import { Lock, Mail, Slash, ThumbsUp } from "lucide-react";
+import ProductDetails from "@/components/ProductDetails";
 
 const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const { id } = await params;
@@ -63,6 +64,7 @@ const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
 					<div className='text-gray-400 text-xs font-semibold uppercase leading-6'>TAGS: {product.tags.join(", ")}</div>
 				</div>
 			</div>
+			<ProductDetails product={product} />
 		</div>
 	);
 };

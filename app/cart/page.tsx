@@ -33,7 +33,7 @@ const Cart = () => {
 	};
 
 	return (
-		<div className='mt-20 px-32'>
+		<div className='my-20 px-32'>
 			<h2 className='text-6xl font-bold text-center'>Winkelwagen</h2>
 			<div className='flex w-full mt-12 gap-12'>
 				<div className='w-2/3 flex flex-col gap-2'>

@@ -10,8 +10,6 @@ export const PRODUCTS: Product[] = [
 		price: "139.00",
 		discount_price: "12.95",
 		description: `<div>
-            <h2>Beschrijving</h2>
-
             <p>
                 Windows 10 kopen? Windows 10 licentie kopen voor je pc doe je bij
                 <a href="http://windowslicenties.nl/">Windowslicenties.nl.</a>&nbsp;U heeft een nieuwe pc of laptop en wilt graag
