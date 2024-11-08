@@ -7,12 +7,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import Logo from "@/public/WINDOWSlicenties.png";
 
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -80,7 +79,7 @@ const NavBar = () => {
 						<Link href='/product/microsoft-office-2019-licentie-kopen' className='text-gray-700'>
 							Office 365
 						</Link>
-						<Link href='#contact' className='text-gray-700'>
+						<Link href='/contact' className='text-gray-700'>
 							Contact
 						</Link>
 					</nav>
@@ -128,21 +127,48 @@ const NavBar = () => {
 							</SheetTrigger>
 							<SheetContent side='left'>
 								<nav className='flex flex-col space-y-4 mt-6'>
-									<Link href='#windows10' className='text-gray-700'>
+									<Link href='/product/windows-10-kopen' className='text-gray-700'>
 										Windows 10
 									</Link>
-									<Link href='#windows11' className='text-gray-700'>
+									<Link href='/product/windows-11-pro-licentie-productcode' className='text-gray-700'>
 										Windows 11
 									</Link>
-									<Link href='#office365' className='text-gray-700'>
+									<Link href='/product/microsoft-office-2019-licentie-kopen' className='text-gray-700'>
 										Office 365
 									</Link>
-									<Link href='#contact' className='text-gray-700'>
+									<Link href='/contact' className='text-gray-700'>
 										Contact
 									</Link>
 								</nav>
 								<div className='mt-6'>
-									<Button variant='secondary'>Aanmelden</Button>
+									<Link href='/cart'>
+										<div className='flex gap-1 text-sm'>
+											<ShoppingCart size={18} />
+											{cartItems.length}
+										</div>
+									</Link>
+									{session ? (
+										<DropdownMenu>
+											<DropdownMenuTrigger>
+												<Avatar>
+													<AvatarImage src={session.user?.image || undefined} />
+													<AvatarFallback>U</AvatarFallback>
+												</Avatar>
+											</DropdownMenuTrigger>
+											<DropdownMenuContent>
+												<DropdownMenuItem>Profile</DropdownMenuItem>
+												<DropdownMenuSeparator />
+												<DropdownMenuItem className='cursor-pointer' onClick={() => signOut()}>
+													<LogOutIcon />
+													Log out
+												</DropdownMenuItem>
+											</DropdownMenuContent>
+										</DropdownMenu>
+									) : (
+										<Link href='/api/auth/signin'>
+											<Button variant='secondary'>Aanmelden</Button>
+										</Link>
+									)}
 								</div>
 							</SheetContent>
 						</Sheet>

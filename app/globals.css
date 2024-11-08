@@ -39,7 +39,16 @@
 	ul {
 		@apply list-disc pl-6;
 	}
+	ol {
+		@apply list-decimal pl-12;
+	}
 	li {
 		@apply mb-2;
+	}
+}
+
+.terms-rich-text {
+	h3 {
+		@apply text-primary mt-12 mb-8;
 	}
 }

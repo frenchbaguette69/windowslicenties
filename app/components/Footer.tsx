@@ -73,15 +73,14 @@ export default Footer;
 
 const FEATURES = ["Levering in één minuut", "100% activatiegarantie", "Nederlandse helpdesk", "Veilig & snel betalen"];
 const LINKS = [
-	{ title: "Over Windowslicenties.nl", href: "/" },
-	{ title: "Contact", href: "/" },
-	{ title: "Algemene Voorwaarden", href: "/" },
-	{ title: "Cookiebeleid (EU)", href: "/" },
-	{ title: "Privacy policy", href: "/" },
+	{ title: "Over Windowslicenties.nl", href: "/over-ons" },
+	{ title: "Contact", href: "/contact" },
+	{ title: "Algemene Voorwaarden", href: "/algemene-voorwaarden" },
+	{ title: "Privacy policy", href: "/privacy-policy" },
 ];
 const ENDLINKS = [
-	{ title: "Over Windowslicenties", href: "/" },
-	{ title: "Neem contact op", href: "/" },
-	{ title: "Algemene Voorwaarden", href: "/" },
-	{ title: "Privacy policy", href: "/" },
+	{ title: "Over Windowslicenties", href: "/over-ons" },
+	{ title: "Neem contact op", href: "/contact" },
+	{ title: "Algemene Voorwaarden", href: "/algemene-voorwaarden" },
+	{ title: "Privacy policy", href: "/privacy-policy" },
 ];
