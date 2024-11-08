@@ -35,10 +35,13 @@ const Success = () => {
 					console.log(data);
 				} else if (data.status === "pending") {
 					setLoadingMessage(data.message);
+					console.log(data);
 				}
 			} catch (error) {
 				console.error(error);
 				toast({ variant: "destructive", description: "An error occurred. Please contact support." });
+				setLoadingMessage("Something went wrong. Please contact support.");
+				clearInterval(interval);
 			}
 		}, 5000);
 
@@ -47,14 +50,14 @@ const Success = () => {
 
 	if (loading)
 		return (
-			<div className='flex w-full items-center justify-center min-h-screen'>
+			<div className='flex flex-col gap-6 w-full items-center justify-center min-h-screen'>
 				<Spinner size='large' />
 				<p className='ml-4'>{loadingMessage}</p>
 			</div>
 		);
 
 	return (
-		<div className='px-24 py-12'>
+		<div className='px-12 lg:px-24 py-6 lg:py-12'>
 			<Table>
 				<TableCaption>We have sent you the license keys via email as well. Please check your inbox</TableCaption>
 				<TableHeader>

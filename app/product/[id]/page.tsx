@@ -35,7 +35,7 @@ const Product = async ({ params }: { params: Promise<{ id: string }> }) => {
 				<meta property='og:url' content={`https://windowslicenties.nl/product/${product.id}`} />
 			</Head>
 			<div className='my-20'>
-				<div className='flex flex-col lg:flex-row gap-20 w-full justify-between px-20 lg:px-64'>
+				<div className='flex flex-col lg:flex-row gap-20 w-full justify-between px-10 lg:px-64'>
 					<div className='flex-1 flex justify-center items-start'>
 						<Image className='object-contain' src={product.imgsrc} alt={product.name} width={500} height={500} />
 					</div>

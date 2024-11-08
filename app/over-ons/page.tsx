@@ -7,7 +7,7 @@ const About = () => {
 			<div className="bg-[url('/assets/images/contact-banner.png')] bg-cover bg-no-repeat text-white flex flex-col justify-center items-center text-center pt-48 pb-36 bg-center">
 				<h2 className='text-4xl font-bold'>Over Windowslicenties.nl</h2>
 				<p className='mt-10 mb-20'>Waarom een Windows 10 licentie kopen bij Windowslicenties.nl?</p>
-				<div className='flex w-2/3 gap-6'>
+				<div className='flex flex-col lg:flex-row w-2/3 gap-12 lg:gap-6'>
 					<div className='flex flex-col items-center font-semibold gap-2'>
 						<Check size={36} />
 						<h4>Software direct per mail, binnen 5 minuten geleverd, 24/7</h4>
@@ -22,7 +22,7 @@ const About = () => {
 					</div>
 				</div>
 			</div>
-			<div className='flex flex-col px-64 mt-16 mb-20'>
+			<div className='flex flex-col px-12 lg:px-64 mt-16 mb-20'>
 				<p className='font-semibold mb-16'>
 					Koop goedkoop, veilig en snel een Windows 10 of Microsoft Office 2019 licentie van Windowslicenties.nl. Wij
 					zijn gespecialiseerd in het leveren van goedkope licenties voor Windows 10 & Microsoft Office 2019. Deze

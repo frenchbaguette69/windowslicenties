@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 const Footer = () => {
 	return (
 		<div className='bg-[#2c2d2c] text-[#808080] text-sm'>
-			<div className='px-20 py-20'>
+			<div className='px-10 lg:px-20 py-10 lg:py-20'>
 				<div className='flex flex-col lg:flex-row justify-between gap-12'>
 					<div className='flex flex-col gap-4 flex-1'>
 						<Image src='/windowslicenties-footer-logo.webp' alt='logo' width={200} height={50} />
@@ -46,14 +46,14 @@ const Footer = () => {
 				</div>
 			</div>
 			<Separator className='bg-[#808080]' />
-			<div className='px-20 py-20 flex flex-col gap-8'>
-				<div className='flex justify-center gap-6'>
+			<div className='px-10 lg:px-20 py-10 lg:py-20 flex flex-col gap-8'>
+				<div className='flex flex-col lg:flex-row justify-center gap-3 lg:gap-6 text-center'>
 					{ENDLINKS.map((link, index) => (
 						<div>
 							<Link key={index} href={link.href}>
 								<span className='text-primary'>{link.title}</span>
 							</Link>
-							{index !== ENDLINKS.length - 1 && <span className='text-primary ml-6'>|</span>}
+							{index !== ENDLINKS.length - 1 && <span className='text-primary ml-6 invisible lg:visible'>|</span>}
 						</div>
 					))}
 				</div>

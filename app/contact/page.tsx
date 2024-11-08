@@ -13,7 +13,7 @@ const Contact = () => {
 				</a>
 				<p>Stel hier uw vragen over onduidelijkheden!</p>
 			</div>
-			<div className='flex gap-16 px-56 mt-32 mb-20'>
+			<div className='flex flex-col lg:flex-row gap-8 lg:gap-16 px-12 lg:px-56 mt-16 lg:mt-32 mb-10 lg:mb-20'>
 				{REASONS.map((reason, index) => (
 					<div key={index} className=''>
 						<h2 className='font-semibold'>{reason.question}</h2>
@@ -23,7 +23,7 @@ const Contact = () => {
 					</div>
 				))}
 			</div>
-			<div className='px-56 mb-28'>
+			<div className='px-12 lg:px-56 mb-16 lg:mb-28'>
 				<h2 className='font-semibold'>ALGEMENE VRAGEN?</h2>
 				<p className='mt-4 font-light'>
 					Voor vragen over activering, of problemen bij uw bestelling kunt u ook terugvinden op onze Veelgestelde vragen

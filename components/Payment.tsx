@@ -36,13 +36,13 @@ export default function Payment({ amount = 1000 }) {
 	}, []);
 
 	return (
-		<div className='flex gap-5'>
+		<div className='flex flex-col-reverse lg:flex-row gap-5'>
 			{clientSecret ? (
 				<Elements stripe={stripePromise} options={{ clientSecret }}>
 					<CheckoutForm />
 				</Elements>
 			) : (
-				<div className='flex w-2/3 items-center justify-center'>
+				<div className='flex lg:w-2/3 items-center justify-center'>
 					<Spinner />
 				</div>
 			)}
@@ -85,7 +85,7 @@ const CheckoutForm = () => {
 	};
 
 	return (
-		<form className='mt-4 w-2/3' onSubmit={handleSubmit}>
+		<form className='mt-4 lg:w-2/3' onSubmit={handleSubmit}>
 			<PaymentElement />
 			<Button
 				disabled={!stripe || !elements || loading || success}
@@ -102,7 +102,7 @@ const Cart = () => {
 	const cartItems = useAtomValue(cartAtom);
 
 	return (
-		<div className='w-1/3 px-8 py-6 bg-gray-50 mt-2 mb-6'>
+		<div className='lg:w-1/3 px-8 py-6 bg-gray-50 mt-2 mb-6'>
 			<div className='flex flex-col gap-4 text-sm'>
 				<div>
 					<div className='flex justify-between'>

@@ -10,8 +10,8 @@ const TABS = {
 
 const ProductDetails = ({ product }: { product: Product }) => {
 	return (
-		<div className='flex justify-center w-full mt-32'>
-			<Tabs defaultValue={TABS.DESCRIPTION} className='flex flex-col items-center lg:w-2/3 px-24'>
+		<div className='flex justify-center w-full mt-16 lg:mt-32'>
+			<Tabs defaultValue={TABS.DESCRIPTION} className='flex flex-col items-center lg:w-2/3 px-6 lg:px-24'>
 				<TabsList className='mb-12'>
 					<TabsTrigger value={TABS.DESCRIPTION}>Beschrijving</TabsTrigger>
 					<TabsTrigger value={TABS.INFORMATION}>Extra informatie</TabsTrigger>

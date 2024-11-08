@@ -2,7 +2,7 @@ import React from "react";
 
 const Terms = () => {
 	return (
-		<div className='p-16'>
+		<div className='p-8 lg:p-16'>
 			<h1 className='text-6xl span-bold text-center my-12'>Algemene Voorwaarden</h1>
 			<div className='rich-text terms-rich-text'>
 				<h3 className='text-primary'>Inhoudsopgave</h3>

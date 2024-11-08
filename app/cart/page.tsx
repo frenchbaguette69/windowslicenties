@@ -33,16 +33,20 @@ const Cart = () => {
 	};
 
 	return (
-		<div className='my-20 px-32'>
-			<h2 className='text-6xl font-bold text-center'>Winkelwagen</h2>
-			<div className='flex w-full mt-12 gap-12'>
-				<div className='w-2/3 flex flex-col gap-2'>
+		<div className='my-20 px-6 lg:px-32'>
+			<h2 className='text-4xl lg:text-6xl font-bold text-center'>Winkelwagen</h2>
+			<div className='flex flex-col lg:flex-row w-full mt-12 gap-12'>
+				<div className='lg:w-2/3 flex flex-col gap-2'>
 					{cartItems.map((item) => (
 						<div key={item.product.id} className='my-5'>
-							<div className='flex items-center justify-between mb-6 px-4'>
-								<X className='cursor-pointer' size={16} onClick={() => removeFromCart(item.product.id)} />
+							<div className='flex flex-col lg:flex-row gap-4 items-center justify-between mb-6 px-4'>
+								<X
+									className='cursor-pointer self-end lg:self-center'
+									size={16}
+									onClick={() => removeFromCart(item.product.id)}
+								/>
 								<Image src={item.product.imgsrc} alt={item.product.name} width={120} height={120} />
-								<h4 className='font-bold text-lg w-28'>{item.product.name}</h4>
+								<h4 className='font-bold text-lg lg:w-28'>{item.product.name}</h4>
 								<p className='text-gray-400 font-semibold text-lg'>
 									&#8364;{item.product.discount_price.split(".").join(",")}
 								</p>
@@ -59,7 +63,7 @@ const Cart = () => {
 						</div>
 					))}
 				</div>
-				<div className='w-1/3'>
+				<div className='lg:w-1/3'>
 					<div className='bg-gray-50 px-6 py-10 font-semibold'>
 						<h4>Totalen winkelwagen</h4>
 						<Separator className='my-4' />
