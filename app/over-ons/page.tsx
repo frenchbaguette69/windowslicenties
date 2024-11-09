@@ -1,5 +1,11 @@
 import { Check } from "lucide-react";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+	title: "Over Windowslicenties.nl - Windowslicenties.nl",
+	description: "Waarom een Windows 10 licentie kopen bij Windowslicenties.nl?",
+};
 
 const About = () => {
 	return (

@@ -1,4 +1,10 @@
 import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Contact - Windowslicenties.nl",
+	description: "Wilt u contact opnemen met Windowslicenties.nl? Dan kunt u mailen naar:",
+};
 
 const Contact = () => {
 	return (
