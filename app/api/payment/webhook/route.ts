@@ -87,13 +87,6 @@ const deliverOrder = async (order: deliverOrderProps) => {
 		return NextResponse.json({ received: true, error: "Not enough licenses available" }, { status: 400 });
 	}
 
-	const res = await sendEmail({ user: order.guest, products });
-
-	if (res.error) {
-		console.error("Error sending email", res.error);
-		return NextResponse.json({ received: true, error: "Error sending email", data: res.error }, { status: 400 });
-	}
-
 	await db.license.updateMany({
 		where: {
 			id: {
@@ -106,6 +99,22 @@ const deliverOrder = async (order: deliverOrderProps) => {
 		},
 	});
 
+	const res = await sendEmail({ user: order.guest, products });
+
+	if (res.error) {
+		console.error("Error sending email", res.error);
+		return NextResponse.json({ received: true, error: "Error sending email", data: res.error }, { status: 200 });
+	}
+
+	await db.order.update({
+		where: {
+			id: order.id,
+		},
+		data: {
+			delivered: true,
+		},
+	});
+
 	return NextResponse.json({ received: true, success: true });
 };
 
@@ -115,12 +124,10 @@ type sendMailProps = {
 };
 
 const sendEmail = async ({ user, products }: sendMailProps) => {
-	const HTML = ` <div> Here are your licenses: <ul> ${products
-		.map((product) => `<li>${product.type}: ${product.key}</li>`)
-		.join("")} </ul> </div> `;
+	const HTML = getHTML({ user, products });
 
 	return await resend.emails.send({
-		from: "onboarding@resend.dev",
+		from: process.env.FROM_ADDRESS || "onboarding@resend.dev",
 		to: user.email,
 		subject: "Your purchase is complete!",
 		html: HTML,
@@ -132,3 +139,41 @@ export const config = {
 		bodyParser: false,
 	},
 };
+
+export const getHTML = ({ user, products }: sendMailProps) => `
+<div style="font-family: Arial, sans-serif; color: #333">
+	<div style="max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden">
+		<!-- Header -->
+		<div style="background-color: #009ddc; padding: 20px; text-align: center">
+			<img src="${
+				process.env.NEXTAUTH_URL
+			}/WINDOWSlicenties.png" alt="windowslicenties logo" style="max-width: 150px; margin-bottom: 10px" />
+			<h1 style="color: #fff; margin: 0; font-size: 24px">Thank You for Your Purchase!</h1>
+		</div>
+
+		<!-- Body -->
+		<div style="padding: 20px">
+			<p>Hi ${user.firstName},</p>
+			<p>Thank you for your purchase! Here are your licenses:</p>
+			<ul style="padding: 0 20px">
+				${products
+					.map(
+						(product) => `
+				<li>${product.type}: <strong>${product.key}</strong></li>
+				`
+					)
+					.join("")}
+			</ul>
+			<p style="margin-top: 20px">
+				If you have any questions, feel free to reach out to us at
+				<a href="mailto:support@yourcompany.com" style="color: #009ddc">support@yourcompany.com</a>.
+			</p>
+		</div>
+
+		<!-- Footer -->
+		<div style="background-color: #f8f8f8; padding: 15px; text-align: center; font-size: 12px; color: #777">
+			<p style="margin: 0">&copy; ${new Date().getFullYear()} Windowslicenties. All rights reserved.</p>
+		</div>
+	</div>
+</div>
+`;
