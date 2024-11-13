@@ -140,7 +140,7 @@ export const config = {
 	},
 };
 
-export const getHTML = ({ user, products }: sendMailProps) => `
+const getHTML = ({ user, products }: sendMailProps) => `
 <div style="font-family: Arial, sans-serif; color: #333">
 	<div style="max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden">
 		<!-- Header -->
