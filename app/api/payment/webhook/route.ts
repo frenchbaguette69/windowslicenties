@@ -166,7 +166,7 @@ const getHTML = ({ user, products }: sendMailProps) => `
 			</ul>
 			<p style="margin-top: 20px">
 				If you have any questions, feel free to reach out to us at
-				<a href="mailto:support@yourcompany.com" style="color: #009ddc">support@yourcompany.com</a>.
+				<a href="mailto:info@windowslicenties.nl" style="color: #009ddc">info@windowslicenties.nl</a>.
 			</p>
 		</div>
 
