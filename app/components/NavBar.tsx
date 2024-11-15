@@ -101,8 +101,8 @@ const NavBar = () => {
 									</Avatar>
 								</DropdownMenuTrigger>
 								<DropdownMenuContent>
-									<DropdownMenuItem>Profile</DropdownMenuItem>
-									<DropdownMenuSeparator />
+									{/* <DropdownMenuItem>Profile</DropdownMenuItem>
+									<DropdownMenuSeparator /> */}
 									<DropdownMenuItem className='cursor-pointer' onClick={() => signOut()}>
 										<LogOutIcon />
 										Log out
@@ -156,8 +156,8 @@ const NavBar = () => {
 												</Avatar>
 											</DropdownMenuTrigger>
 											<DropdownMenuContent>
-												<DropdownMenuItem>Profile</DropdownMenuItem>
-												<DropdownMenuSeparator />
+												{/* <DropdownMenuItem>Profile</DropdownMenuItem>
+												<DropdownMenuSeparator /> */}
 												<DropdownMenuItem className='cursor-pointer' onClick={() => signOut()}>
 													<LogOutIcon />
 													Log out
