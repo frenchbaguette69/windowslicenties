@@ -21,7 +21,7 @@ const Hero = () => {
 						<Button className='mt-5'>Online bestellen</Button>
 
 						{/* Trustpilot Image wrapped in a Next.js Link */}
-						<Link href='https://www.trustpilot.com/review/windowslicenties.nl' passHref>
+						{/* <Link href='https://www.trustpilot.com/review/windowslicenties.nl' passHref>
 							<Image
 								className='mt-5'
 								src={trustpilot}
@@ -29,7 +29,7 @@ const Hero = () => {
 								width={400}
 								height={250}
 							/>
-						</Link>
+						</Link> */}
 					</div>
 					<div className='mt-5 md:mt-0 md:w-1/2 flex justify-center'>
 						<Image

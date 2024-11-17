@@ -57,13 +57,13 @@ const Footer = () => {
 						</div>
 					))}
 				</div>
-				<p className='text-center text-xs'>
+				{/* <p className='text-center text-xs'>
 					Windowslicenties is dé licentieshop van Nederland. Wij leveren ook licenties aan zakelijke klanten op factuur.
 					Wij zijn niet verbonden met de softwareontwikkelaars door overeenkomsten. De productcodes die je bij ons
 					koopt, zijn overtollig of worden opnieuw uitgegeven volgens de uitspraak in het UsedSoft-arrest.
 					Prijswijzigingen en typefouten zijn onder voorbehoud. Neem contact met ons op via info@windowslicenties.nl als
 					u problemen ondervindt!
-				</p>
+				</p> */}
 			</div>
 		</div>
 	);
